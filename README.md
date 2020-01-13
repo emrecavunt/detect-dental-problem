@@ -1,10 +1,12 @@
 
 ## Detect Dental Problem
 
-
- -- To build docker file 
+# To Build docker file
+ 
    `docker build . -t predicdental`
- -- To run docker image 
+   
+#  To Run docker image 
+
    `docker run -p 5000:5000 predicdental`
 
 ## Specification
