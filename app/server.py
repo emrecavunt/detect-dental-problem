@@ -2,8 +2,10 @@ from starlette.applications import Starlette
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
+from starlette.requests import Request
 import uvicorn, aiohttp, asyncio
 from io import BytesIO
+import time
 
 from fastai import *
 from fastai.vision import *
@@ -41,15 +43,23 @@ loop.close()
 
 @app.route('/')
 def index(request):
-    html = path/'view'/'index.html'
-    return HTMLResponse(html.open().read())
+    try:
+        html = path/'view'/'index.html'
+        return HTMLResponse(html.open().read())
+    except Exception as e:
+        return(str(e))
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    data = await request.form()
-    img_bytes = await (data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    return JSONResponse({'result': str(learn.predict(img)[0])})
+    try:
+        t = time.time() # get execution time
+        data = await request.form()
+        img_bytes = await (data['file'].read())
+        img = open_image(BytesIO(img_bytes))
+        dt = time.time() - t
+        return JSONResponse({'result': str(learn.predict(img)[0],'executiontime:': dt)})
+    except Exception as e:
+        return(str(e))
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=5000)
