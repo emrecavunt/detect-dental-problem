@@ -1,5 +1,5 @@
 
-#Detect Dental Problem
+## Detect Dental Problem
 
 
 > You can use [the @all-contributors bot 🤖](https://allcontributors.org/docs/en/bot/overview) to automate acknowledging contributors to your open source projects
