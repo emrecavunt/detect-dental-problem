@@ -1,3 +1,3 @@
-docker build . -t teeth
+docker build . -t predicdental
 
-docker run -p 8080:8080 teeth
+docker run -p 5000:5000 predicdental
