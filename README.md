@@ -2,13 +2,14 @@
 ## Detect Dental Problem
 
 
-> You can use [the @all-contributors bot 🤖](https://allcontributors.org/docs/en/bot/overview) to automate acknowledging contributors to your open source projects
+ -- To build docker file 
+   `docker build . -t predicdental`
+ -- To run docker image 
+   `docker run -p 5000:5000 predicdental`
 
 ## Specification
-The [specification](https://allcontributors.org) is detailed on [allcontributors.org](https://allcontributors.org)
+The [production](https://course.fast.ai/deployment_google_app_engine.html) is detailed on [https://course.fast.ai/](https://course.fast.ai/)
 
-## Emoji key
-The [Emoji Key](https://allcontributors.org/docs/en/emoji-key) ✨ (and Contribution Types) can be found on [allcontributors.org](https://allcontributors.org)
 
 ## Contributors ✨
 
