@@ -57,7 +57,8 @@ async def analyze(request):
         img_bytes = await (data['file'].read())
         img = open_image(BytesIO(img_bytes))
         dt = time.time() - t
-        return JSONResponse({'result': str(learn.predict(img)[0],'executiontime:': dt)})
+        dtexectime = ("%0.02f seconds" % (dt))
+        return JSONResponse({'result': str(learn.predict(img)[0]),'executiontime': dtexectime})
     except Exception as e:
         return(str(e))
 
