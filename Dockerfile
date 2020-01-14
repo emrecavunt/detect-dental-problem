@@ -7,13 +7,13 @@ RUN apt-get update
 
 RUN apt-get install --yes \
     python \
-    python-dev \
+    #python-dev \
     python-pip \
     build-essential \
     git \
     bash \
     strace \
-  && pip install virtualenv \
+  #&& pip install virtualenv \
   && pip install 'pillow<7.0.0' \
   && rm -rf /var/cache/apk/* \
   && apt-get clean
