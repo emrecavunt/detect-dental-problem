@@ -3,7 +3,7 @@ orbs:
     gcp-gcr: circleci/gcp-gcr@0.6.1
     cloudrun: circleci/gcp-cloud-run@1.0.0
 jobs:        
-  build_push_image_cloud_run_mangaged:
+  build:
     machine: true
     steps:
       - checkout
