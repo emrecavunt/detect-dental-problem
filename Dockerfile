@@ -30,6 +30,8 @@ COPY app opt/detect-dental-problem/
 
 RUN ls
 
+RUN ls opt/detect_dental_problem
+
 RUN python opt/detect-dental-problem/
 
 EXPOSE 8080
