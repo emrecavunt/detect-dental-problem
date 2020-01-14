@@ -1,8 +1,8 @@
 FROM python:3.6-slim-stretch
 MAINTAINER Emre Cavunt <emre.cavunt@gmail.com>
 
-RUN mkdir /opt/detect_dental_problem/
-WORKDIR /opt/detect_dental_problem/
+RUN mkdir /opt/detect-dental-problem/
+# WORKDIR /opt/detect-dental-problem/
 
 RUN apt-get update
 RUN apt-get install --yes software-properties-common
@@ -26,9 +26,9 @@ RUN apt-get install --yes \
 ADD requirements.txt requirements.txt
 RUN pip --no-cache-dir install -r requirements.txt
 
-COPY app opt/detect_dental_problem/
+COPY app opt/detect-dental-problem/
 
-RUN python opt/detect_dental_problem/
+RUN python opt/detect-dental-problem/
 
 EXPOSE 8080
 
