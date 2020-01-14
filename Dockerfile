@@ -36,7 +36,7 @@ RUN ls /opt
 RUN echo "------"
 
 
-RUN ls /opt/detect_dental_problem
+RUN ls /opt/detect-dental-problem
 
 
 RUN echo "------"
@@ -46,4 +46,4 @@ RUN python opt/detect-dental-problem/
 
 EXPOSE 8080
 
-CMD ["python", "opt/detect_dental_problem/server.py", "serve"]
+CMD ["python", "opt/detect-dental-problem/server.py", "serve"]
