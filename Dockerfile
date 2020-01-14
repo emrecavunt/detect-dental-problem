@@ -6,7 +6,8 @@ RUN apt-add-repository contrib
 RUN apt-get update
 
 RUN apt-get install --yes \
-    python \
+    # python \
+    python3-dev gcc \
     #python-dev \
     python-pip \
     build-essential \
