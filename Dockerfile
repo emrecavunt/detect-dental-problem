@@ -1,4 +1,4 @@
-FROM python:3.7.4
+FROM python:3.6-slim-stretch
 MAINTAINER Emre Cavunt <emre.cavunt@gmail.com>
 
 RUN mkdir /opt/detect_dental_problem/
