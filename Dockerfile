@@ -1,4 +1,4 @@
-FROM python:3.6-slim-stretch
+FROM python:3.7.4
 MAINTAINER Emre Cavunt <emre.cavunt@gmail.com>
 
 RUN mkdir /opt/detect_dental_problem/
@@ -26,7 +26,7 @@ RUN apt-get install --yes \
 ADD requirements.txt requirements.txt
 RUN pip --no-cache-dir install -r requirements.txt
 
-COPY dist/detect_dental_problem /opt/detect_dental_problem/
+COPY app /opt/detect_dental_problem/
 
 RUN python app/server.py
 
