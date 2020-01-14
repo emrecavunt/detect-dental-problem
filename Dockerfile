@@ -28,6 +28,8 @@ RUN pip --no-cache-dir install -r requirements.txt
 
 COPY app opt/detect-dental-problem/
 
+RUN ls
+
 RUN python opt/detect-dental-problem/
 
 EXPOSE 8080
