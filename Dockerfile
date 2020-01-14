@@ -28,8 +28,8 @@ RUN pip --no-cache-dir install -r requirements.txt
 
 COPY app /opt/detect_dental_problem/
 
-RUN python app/server.py
+RUN python /opt/detect_dental_problem/
 
 EXPOSE 8080
 
-CMD ["python", "app/server.py", "serve"]
+CMD ["python", "/opt/detect_dental_problem/server.py", "serve"]
