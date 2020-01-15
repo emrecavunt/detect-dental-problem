@@ -47,7 +47,7 @@ def index(request):
         html = path/'view'/'index.html'
         return HTMLResponse(html.open().read())
     except Exception as e:
-        return(str(e))
+        return JSONResponse(str(e))
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
@@ -56,11 +56,13 @@ async def analyze(request):
         data = await request.form()
         img_bytes = await (data['file'].read())
         img = open_image(BytesIO(img_bytes))
+        result,_,prob = learn.predict(img)
         dt = time.time() - t
+        prob = [round(i,3) for i in prob.data.numpy()]
         dtexectime = ("%0.02f seconds" % (dt))
-        return JSONResponse({'result': str(learn.predict(img)[0]),'executiontime': dtexectime})
+        return JSONResponse({'result': str(result),'executiontime': dtexectime, 'probability':  str(prob)})
     except Exception as e:
-        return(str(e))
+        return JSONResponse({'error:',str(e)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=5000)

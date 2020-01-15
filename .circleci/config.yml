@@ -2,21 +2,7 @@ version: 2.1
 orbs:
     gcp-gcr: circleci/gcp-gcr@0.6.1
     cloudrun: circleci/gcp-cloud-run@1.0.0
-jobs: 
-  build_test:
-   docker:
-     - image: circleci/python:3.7.4
-   steps:
-     - checkout
-     - run:
-         name: Install Python Dependencies
-         command: |
-           echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-           pip install --user -r requirements.txt
-     - run:
-         name: Run Tests
-         command: |
-           pytest       
+jobs:       
   build:
     machine: true
     steps:

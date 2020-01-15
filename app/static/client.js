@@ -33,9 +33,15 @@ function analyze() {
     if (this.readyState === 4) {
       var response = JSON.parse(e.target.responseText);
       console.log(response);
-      el(
-        "result-label"
-      ).innerHTML = `Result = ${response["result"]} - ${response["executiontime"]}`;
+      if (!response.error) {
+        el(
+          "result-label"
+        ).innerHTML = `Result = ${response["result"]} - exc.time: ${response["executiontime"]} - probability: ${response["probability"]}`;
+      } else {
+        el(
+          "result-label"
+        ).innerHTML = `Result = ${response["result"]} - exc.time: ${response["executiontime"]} - probability: ${response["probability"]}`;
+      }
     }
     el("analyze-button").innerHTML = "Analyze";
   };
