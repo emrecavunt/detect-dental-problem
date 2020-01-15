@@ -11,8 +11,8 @@ from fastai import *
 from fastai.vision import *
 
 
-model_file_url = 'https://www.dropbox.com/s/gov1lbsotjyx00s/final-year2.pth?raw=1'
-model_file_name = 'model'
+model_file_url = 'https://www.dropbox.com/s/xcrxkd2fb6h9lr9/export.pkl?raw=1'
+model_file_name = 'export'
 classes = ['decay', 'missing', 'split']
 path = Path(__file__).parent
 
@@ -29,11 +29,8 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
-    data_bunch = ImageDataBunch.single_from_classes(path, classes,
-        ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
-    learn = cnn_learner(data_bunch, models.resnet34, pretrained=False)
-    learn.load(model_file_name)
+    await download_file(model_file_url, path/f'{model_file_name}.pkl')
+    learn = load_learner(path)
     return learn
 
 loop = asyncio.get_event_loop()
@@ -58,9 +55,9 @@ async def analyze(request):
         img = open_image(BytesIO(img_bytes))
         result,_,prob = learn.predict(img)
         dt = time.time() - t
-        prob = [round(i,3) for i in prob.data.numpy()]
-        dtexectime = ("%0.02f seconds" % (dt))
-        return JSONResponse({'result': str(result),'executiontime': dtexectime, 'probability':  str(prob)})
+        # prob = [round(i,3) for i in prob.data.numpy()]
+        dtexectime = ("%0.03f seconds" % (dt))
+        return JSONResponse({'result': str(result.obj),'executiontime': dtexectime, 'probability':  str(prob)})
     except Exception as e:
         return JSONResponse({'error:',str(e)})
 
