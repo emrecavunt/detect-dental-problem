@@ -45,7 +45,7 @@ def index(request):
     except Exception as e:
         return JSONResponse(str(e))
 
-@app.route('/analyze', methods=['POST'])
+@app.route('/analyze-pose', methods=['POST'])
 async def analyze(request):
     try:
         t = time.time() # get execution time

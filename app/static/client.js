@@ -23,7 +23,7 @@ function analyze() {
   var loc = window.location;
   xhr.open(
     "POST",
-    `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
+    `${loc.protocol}//${loc.hostname}:${loc.port}/analyze-pose`,
     true
   );
   xhr.onerror = function() {
