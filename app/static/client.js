@@ -53,9 +53,9 @@ function analyze() {
 
 function analyze_pose() {
   var uploadFiles = el("file-input").files;
-  if (uploadFiles.length != 1) alert("Please select 1 file to analyze!");
+  if (uploadFiles.length != 1) alert("Please select 1 file to analyze pose!");
 
-  el("analyze-button").innerHTML = "Analyzing...";
+  el("analyze-pose-button").innerHTML = "Analyzing...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
   xhr.open(
@@ -80,7 +80,7 @@ function analyze_pose() {
         ).innerHTML = `Result = ${response["result"]} - exc.time: ${response["executiontime"]} - probability: ${response["probability"]}`;
       }
     }
-    el("analyze-button").innerHTML = "Analyze";
+    el("analyze-pose-button").innerHTML = "Analyze";
   };
 
   var fileData = new FormData();

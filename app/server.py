@@ -47,13 +47,15 @@ async def ksetup_learner():
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
+ktasks = [asyncio.ensure_future(ksetup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+klearn = loop.run_until_complete(asyncio.gather(*ktasks))[0]
 loop.close()
 
-kloop = asyncio.get_event_loop()
-ktasks = [asyncio.ensure_future(ksetup_learner())]
-klearn = kloop.run_until_complete(asyncio.gather(*ktasks))[0]
-kloop.close()
+# kloop = asyncio.get_event_loop()
+# ktasks = [asyncio.ensure_future(ksetup_learner())]
+# klearn = kloop.run_until_complete(asyncio.gather(*ktasks))[0]
+# kloop.close()
 
 @app.route('/')
 def index(request):
