@@ -56,7 +56,7 @@ async def analyze(request):
         dt = time.time() - t
         # prob = [round(i,3) for i in prob.data.numpy()]
         dtexectime = ("%0.03f seconds" % (dt))
-        return JSONResponse({'result': str(result.obj),'executiontime': dtexectime, 'probability':  str(prob)})
+        return JSONResponse({'result-pose': str(result.obj),'executiontime': dtexectime, 'probability':  str(prob)})
     except Exception as e:
         return JSONResponse({'error:',str(e)})
 
