@@ -52,7 +52,7 @@ loop.close()
 
 kloop = asyncio.get_event_loop()
 ktasks = [asyncio.ensure_future(ksetup_learner())]
-klearn = loop.run_until_complete(asyncio.gather(*ktasks))[0]
+klearn = kloop.run_until_complete(asyncio.gather(*ktasks))[0]
 kloop.close()
 
 @app.route('/')
